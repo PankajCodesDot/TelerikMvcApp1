@@ -19,14 +19,15 @@ namespace kendovijay.Controllers
         }
         public JsonResult GetStudent([DataSourceRequest] DataSourceRequest request)
         {
-            IEnumerable<UserModel> StudentlistViewModel =
-                (from objstudent in db.students
-                 select new UserModel()
-                 {
-                     id = objstudent.id,
-                     name = objstudent.name,
-                     address = objstudent.address
-                 }).ToList();
+        //    IEnumerable<UserModel> StudentlistViewModel =
+        //        (from objstudent in db.students
+        //         select new UserModel()
+        //         {
+        //             id = objstudent.id,
+        //             name = objstudent.name,
+        //             address = objstudent.address
+        //         }).ToList();
+            var StudentlistViewModel = db.students.ToList();
             return Json(StudentlistViewModel.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
